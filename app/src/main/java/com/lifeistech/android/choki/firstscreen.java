@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.content.SharedPreferences;
-import android.content.Intent;
+
 
 
 
@@ -62,10 +62,15 @@ public class FirstScreen extends AppCompatActivity {
         goukei = data2.getInt("Goukeikingaku",goukei);
 
 
-        /*Intent intent = new Intent(this,LastScreen.class);
+        Intent intent = new Intent(this,LastScreen.class);
         intent.putExtra("name",name);
         intent.putExtra("goukei",goukei);
-        startActivity(intent);*/
+        startActivity(intent);
+
+
+
+
+
 
     }
 
