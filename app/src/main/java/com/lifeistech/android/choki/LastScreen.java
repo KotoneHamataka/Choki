@@ -1,24 +1,43 @@
 package com.lifeistech.android.choki;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.content.SharedPreferences;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class LastScreen extends AppCompatActivity {
+
+    String name;
+    int goukei;
+    ArrayList<Bill> billList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_LastScreen);
+        setContentView(R.layout.activity_last);
 
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+        Intent intent = getIntent();
+        billList = intent.getParcelableArrayListExtra("bill_list");
+        ArrayAdapter<Bill>adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, billList);
 
-        adapter.add("name");
-        adapter.add("kingaku");
-
-        ListView listView1 = (ListView)findViewById(R.id.listView1);
+        ListView listView1 = (ListView)findViewById(R.id.listView);
         listView1.setAdapter(adapter);
+
+
+        //Log.d("name",getsした値);
+
+
 
     }
 

@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.content.SharedPreferences;
+import android.widget.TextView;
 
-
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FirstScreen extends AppCompatActivity {
@@ -18,60 +19,47 @@ public class FirstScreen extends AppCompatActivity {
 
     EditText nameEditText;
     EditText goukeiEditText;
-    String name;
-    int goukei;
+    TextView ruikeiTextView;
     int ruikei;
+
+    ArrayList<Bill> billList = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_FirstScreen);
+        setContentView(R.layout.activity_first);
 
         nameEditText = (EditText) findViewById(R.id.editText);
-        goukeiEditText = (EditText)findViewById(R.id.editText);
-
+        goukeiEditText = (EditText) findViewById(R.id.editText2);
+        ruikeiTextView = (TextView) findViewById(R.id.editText6);
     }
 
 
-    public  void next(View v){
+    public void next(View v) {
+        // 一人分の請求金額を表したクラス
+        Bill bill = new Bill();
+        //名前のデータを保存
+        bill.name = nameEditText.getText().toString();
+        //　”名前”さんの使用金額データを保存
+        bill.price = Integer.valueOf(goukeiEditText.getText().toString());
+        billList.add(bill);
 
-        SharedPreferences data1 = getSharedPreferences("DataSave", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor1 = data1.edit();
-        name = nameEditText.getText().toString();
-        editor1.putString("Username", name);
-        editor1.commit();
-
-        SharedPreferences data2 = getSharedPreferences("DataSave", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor2 = data2.edit();
-        goukei = Integer.parseInt(goukeiEditText.getText().toString()) + data2.getInt("goukei",0);
-        editor2.putInt("Goukeikingaku", goukei);
-        editor2.commit();
+        // 今までの合計に足す
+        ruikei += bill.price;
 
         nameEditText.setText("");
         goukeiEditText.setText("");
-
+        ruikeiTextView.setText(String.valueOf(ruikei));
     }
 
-    public void enter(View v){
+    public void enter(View v) {
+        next(null);
 
-        SharedPreferences data1 =  getSharedPreferences("DataSave", Context.MODE_PRIVATE);
-        name = data1.getString("Username", name);
-
-        SharedPreferences data2 = getSharedPreferences("DataSave",Context.MODE_PRIVATE);
-        goukei = data2.getInt("Goukeikingaku",goukei);
-
-
-        Intent intent = new Intent(this,LastScreen.class);
-        intent.putExtra("name",name);
-        intent.putExtra("goukei",goukei);
+        Intent intent = new Intent(this, LastScreen.class);
+        intent.putExtra("bill_list", billList.toArray());
+        intent.putParcelableArrayListExtra("bill_list", billList);
         startActivity(intent);
-
-
-
-
-
-
     }
 
 }

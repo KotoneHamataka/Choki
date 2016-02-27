@@ -13,11 +13,15 @@
         android:gravity="center|bottom"
         android:layout_weight="1">
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:gravity="center">
 
             <LinearLayout
@@ -41,75 +45,73 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="金額"
+                    android:id="@+id/textView11"
+                    android:layout_weight="1"
+                    android:gravity="center" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="金額"
-                        android:id="@+id/textView11"
-                        android:layout_weight="1"
-                        android:gravity="center" />
-
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/editText2"
-                        android:layout_weight="5" />
-                </LinearLayout>
-
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText2"
+                    android:layout_weight="5"
+                    android:inputType="number|numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="累計"
+                    android:id="@+id/textView12"
+                    android:layout_weight="1"
+                    android:gravity="center" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="累計"
-                        android:id="@+id/textView12"
-                        android:layout_weight="1"
-                        android:gravity="center" />
-
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/editText6"
-                        android:layout_weight="5" />
-                </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText6"
+                    android:layout_weight="5" />
             </LinearLayout>
 
         </LinearLayout>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="NEXT"
             android:id="@+id/next"
             android:background="#BCE2E8"
-            android:textSize="48dp" />
+            android:textSize="48dp"
+            android:onClick="next" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ENTER"
             android:id="@+id/enter"
             android:background="#BCE2E8"
-            android:textSize="48dp" />
+            android:textSize="48dp"
+            android:layout_marginTop="16dp"
+            android:onClick="enter" />
 
     </LinearLayout>
 
