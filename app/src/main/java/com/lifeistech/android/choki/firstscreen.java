@@ -21,6 +21,8 @@ public class FirstScreen extends AppCompatActivity {
     EditText goukeiEditText;
     TextView ruikeiTextView;
     int ruikei;
+    int average;
+
 
     ArrayList<Bill> billList = new ArrayList<>();
 
@@ -51,10 +53,12 @@ public class FirstScreen extends AppCompatActivity {
         nameEditText.setText("");
         goukeiEditText.setText("");
         ruikeiTextView.setText(String.valueOf(ruikei));
-    }
+}
 
     public void enter(View v) {
         next(null);
+
+
 
         Intent intent = new Intent(this, LastScreen.class);
         intent.putExtra("bill_list", billList.toArray());

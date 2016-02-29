@@ -25,6 +25,9 @@ public class BillAdapter extends ArrayAdapter<Bill> {
         if (billList.size() != 0) {
             averagePrice = totalPrice / billList.size();
         }
+
+
+
     }
 
     @Override
@@ -40,6 +43,17 @@ public class BillAdapter extends ArrayAdapter<Bill> {
         Bill bill = getItem(position);
         nameTextView.setText(bill.name);
 
+        priceTextView.setText(String.valueOf(Math.abs(bill.price - averagePrice)));
+
+        if(bill.price <= averagePrice) {
+            priceLabelTextView.setText("円お支払い");
+
+
+        }else{
+            priceLabelTextView.setText("円集金");
+
+
+        }
 
 
         return convertView;

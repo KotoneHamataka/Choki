@@ -29,7 +29,7 @@ public class LastScreen extends AppCompatActivity {
 
         Intent intent = getIntent();
         billList = intent.getParcelableArrayListExtra("bill_list");
-        ArrayAdapter<Bill>adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, billList);
+        BillAdapter adapter = new BillAdapter(this, billList);
 
         ListView listView1 = (ListView)findViewById(R.id.listView);
         listView1.setAdapter(adapter);
