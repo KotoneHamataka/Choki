@@ -1,6 +1,7 @@
 package com.lifeistech.android.choki;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,8 @@ public class BillAdapter extends ArrayAdapter<Bill> {
 
         }else{
             priceLabelTextView.setText("円集金");
+            priceLabelTextView.setTextColor(Color.parseColor("#FF0000"));
+
 
 
         }
