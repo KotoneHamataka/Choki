@@ -70,6 +70,8 @@ public class FirstScreen extends AppCompatActivity {
 
         if(Bill.futoppara == 0) {
             Bill.percentage = (rnd.nextInt(6) + 5) * 10;
+
+
         }
 
         // 一人分の請求金額を表したクラス
@@ -79,12 +81,9 @@ public class FirstScreen extends AppCompatActivity {
         //　”名前”さんの使用金額データを保存
         bill.price = Integer.valueOf(goukeiEditText.getText().toString());
         // 太っ腹を設定
+        bill.isFutoppara = 1;
+
         Bill.futoppara += 1;
-
-
-
-
-
 
         billList.add(bill);
 

@@ -15,22 +15,15 @@ import java.util.List;
  */
 public class BillAdapter extends ArrayAdapter<Bill> {
     int totalPrice;
-    int averagePrice;
 
 
     public BillAdapter(Context context, List<Bill> billList) {
         super(context, R.layout.item_bill, billList);
+
         totalPrice = 0;
         for (Bill bill : billList) {
             totalPrice += bill.price;
         }
-        if (billList.size() != 0) {
-            averagePrice = totalPrice / billList.size();
-        }
-
-
-
-
 
 
     }
@@ -47,15 +40,23 @@ public class BillAdapter extends ArrayAdapter<Bill> {
 
         Bill bill = getItem(position);
 
+        int price;
+        if (bill.isFutoppara == 0) {
+            // 太っ腹を押してない人数
+            int num = getCount() - Bill.futoppara;
+            price = (int)(totalPrice * (((100 - Bill.percentage) / num) / (float)100) - bill.price);
+        } else {
+            int num = Bill.futoppara;
+            price = (int)(totalPrice * ((Bill.percentage / num) / (float)100) - bill.price);
+        }
+
         nameTextView.setText(bill.name);
 
-        priceTextView.setText(String.valueOf(Math.abs(bill.price - averagePrice)));
+        priceTextView.setText(String.valueOf(Math.abs(price)));
 
-        if(bill.price <= averagePrice) {
+        if (price < 0) {
             priceLabelTextView.setText("円お支払い");
-
-
-        }else{
+        } else {
             priceLabelTextView.setText("円集金");
             priceLabelTextView.setTextColor(Color.parseColor("#FF0000"));
         }
