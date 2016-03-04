@@ -17,6 +17,7 @@ public class BillAdapter extends ArrayAdapter<Bill> {
     int totalPrice;
     int averagePrice;
 
+
     public BillAdapter(Context context, List<Bill> billList) {
         super(context, R.layout.item_bill, billList);
         totalPrice = 0;
@@ -26,6 +27,9 @@ public class BillAdapter extends ArrayAdapter<Bill> {
         if (billList.size() != 0) {
             averagePrice = totalPrice / billList.size();
         }
+
+
+
 
 
 
@@ -42,6 +46,7 @@ public class BillAdapter extends ArrayAdapter<Bill> {
         TextView priceLabelTextView = (TextView) convertView.findViewById(R.id.textPriceLabel);
 
         Bill bill = getItem(position);
+
         nameTextView.setText(bill.name);
 
         priceTextView.setText(String.valueOf(Math.abs(bill.price - averagePrice)));
@@ -53,12 +58,11 @@ public class BillAdapter extends ArrayAdapter<Bill> {
         }else{
             priceLabelTextView.setText("円集金");
             priceLabelTextView.setTextColor(Color.parseColor("#FF0000"));
-
-
-
         }
-
 
         return convertView;
     }
 }
+
+
+

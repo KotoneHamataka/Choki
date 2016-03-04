@@ -12,6 +12,9 @@ public class Bill implements Parcelable {
     public String name;
     public int price;
 
+    public static int futoppara; // 0: 太っ腹じゃない, 1: 太っ腹
+    public static int percentage;
+
     Bill() {
 
     }
@@ -30,6 +33,7 @@ public class Bill implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeInt(price);
+        dest.writeInt(futoppara);
     }
 
     public static final Parcelable.Creator<Bill> CREATOR
@@ -46,6 +50,7 @@ public class Bill implements Parcelable {
     private Bill(Parcel in) {
         name = in.readString();
         price = in.readInt();
+        futoppara = in.readInt();
     }
 
 }

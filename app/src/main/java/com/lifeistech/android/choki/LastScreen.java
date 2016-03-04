@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -33,6 +34,8 @@ public class LastScreen extends AppCompatActivity {
 
         ListView listView1 = (ListView)findViewById(R.id.listView);
         listView1.setAdapter(adapter);
+
+        //View.setTextSize(36);
 
 
         //Log.d("name",getsした値);
