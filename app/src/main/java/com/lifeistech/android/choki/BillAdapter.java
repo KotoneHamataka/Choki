@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -37,6 +39,7 @@ public class BillAdapter extends ArrayAdapter<Bill> {
         TextView nameLabelTextView = (TextView) convertView.findViewById(R.id.textNameLabel);
         TextView priceTextView = (TextView) convertView.findViewById(R.id.textPrice);
         TextView priceLabelTextView = (TextView) convertView.findViewById(R.id.textPriceLabel);
+        TextView futopparaTextView = (TextView)convertView.findViewById(R.id.textfutoppara);
 
         Bill bill = getItem(position);
 
@@ -59,6 +62,14 @@ public class BillAdapter extends ArrayAdapter<Bill> {
         } else {
             priceLabelTextView.setText("円集金");
             priceLabelTextView.setTextColor(Color.parseColor("#FF0000"));
+        }
+
+        if(bill.isFutoppara ==1){
+            futopparaTextView.setText("太っ腹");
+            futopparaTextView.setTextColor(Color.parseColor("#83CCD2"));
+        }else{
+            futopparaTextView.setText("細っぱら");
+            futopparaTextView.setTextColor(Color.parseColor("#BCE2E8"));
         }
 
         return convertView;
